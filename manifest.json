@@ -3,13 +3,18 @@
     "name": "Adfriend",
     "version": "0.5",
     "description": "Adfriend is designed to replace a chrome ads on the browser with some positive and helpful content",
-    "permission": ["activeTab"],
+    "permissions": ["activeTab", "scripting"],
     "background": {
         "service_worker": "background_process.js"
     },
-    "action": {
-        "default_popup": "ui/ui_interface.html"
-        //"default_icon": "icons/logo.png"
+    "icons": {
+        "16": "ui/icons/logo.png",
+        "48": "ui/icons/logo.png",
+        "128": "ui/icons/logo.png"
     },
-    "host_persmissions": ["http://*/*", "https://*/*"]
+    "action": {
+        "default_popup": "ui/ui_interface.html",
+        "default_icon": "ui/icons/logo.png"
+    },
+    "host_permissions": ["http://*/*", "https://*/*"]
 }

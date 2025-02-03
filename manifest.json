@@ -8,8 +8,8 @@
         "service_worker": "background_process.js"
     },
     "action": {
-        "default_popup": "ui/ui_interface.html",
-        "default_icon": "icons/logo.png"
+        "default_popup": "ui/ui_interface.html"
+        //"default_icon": "icons/logo.png"
     },
     "host_persmissions": ["http://*/*", "https://*/*"]
 }

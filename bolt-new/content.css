@@ -1,0 +1,75 @@
+/* Styles for AdFriend widgets injected into web pages */
+.adfriend-widget {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin: 10px 0;
+    position: relative;
+  }
+  
+  .adfriend-widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .adfriend-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .adfriend-widget .quote {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #374151;
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .adfriend-widget .controls {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  
+  .adfriend-widget button {
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .adfriend-widget button:hover {
+    background-color: #f3f4f6;
+    color: #4f46e5;
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .adfriend-widget {
+      background: #1f2937;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .adfriend-widget .quote {
+      color: #e5e7eb;
+    }
+    
+    .adfriend-widget button {
+      color: #9ca3af;
+    }
+    
+    .adfriend-widget button:hover {
+      background-color: #374151;
+      color: #818cf8;
+    }
+  }

@@ -1,0 +1,45 @@
+{
+    "manifest_version": 3,
+    "name": "AdFriend",
+    "version": "1.0.0",
+    "description": "Transform ad spaces into positive, interactive widgets with motivational quotes, timers, and daily challenges.",
+    "permissions": [
+      "storage",
+      "notifications",
+      "scripting",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "*://*/*"
+    ],
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "logo.png",
+        "32": "logo.png",
+        "48": "logo.png",
+        "128": "logo.png"
+      }
+    },
+    "icons": {
+      "16": "logo.png",
+      "32": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*/*"],
+        "js": ["content.js"],
+        "css": ["content.css"]
+      }
+    ],
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+    "web_accessible_resources": [{
+      "resources": ["index.html", "styles.css", "app.js"],
+      "matches": ["<all_urls>"]
+    }]
+  }

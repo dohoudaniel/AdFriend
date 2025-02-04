@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdFriend</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>AdFriend</h1>
+                <p class="greeting" id="greeting">Good morning</p>
+            </div>
+            <div class="header-controls">
+                <button id="themeToggle" class="icon-button" title="Toggle theme">
+                    <span class="material-icons">dark_mode</span>
+                </button>
+                <button id="settingsButton" class="icon-button" title="Settings">
+                    <span class="material-icons">settings</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Live Preview Panel -->
+            <section class="preview-panel">
+                <h2>Live Preview</h2>
+                <div class="widget-preview" id="widgetPreview">
+                    <!-- Quote Widget -->
+                    <div class="widget quote-widget">
+                        <blockquote id="quote">
+                            <p class="quote-text">Loading inspirational quote...</p>
+                            <footer class="quote-author"></footer>
+                        </blockquote>
+                        <button class="refresh-quote" id="refreshQuote">
+                            <span class="material-icons">refresh</span>
+                        </button>
+                    </div>
+
+                    <!-- Pomodoro Timer -->
+                    <div class="widget timer-widget">
+                        <div class="timer" id="timer">25:00</div>
+                        <div class="timer-controls">
+                            <button id="startTimer">Start</button>
+                            <button id="resetTimer">Reset</button>
+                        </div>
+                    </div>
+
+                    <!-- Daily Goal -->
+                    <div class="widget goal-widget">
+                        <h3>Today's Main Goal</h3>
+                        <p id="currentGoal">No goal set yet</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customization Panel -->
+            <section class="customization-panel">
+                <h2>Customize Your Experience</h2>
+                
+                <!-- Layout Selection -->
+                <div class="control-group">
+                    <label>Widget Layout</label>
+                    <select id="layoutSelect">
+                        <option value="grid">Grid</option>
+                        <option value="carousel">Carousel</option>
+                        <option value="single">Single View</option>
+                    </select>
+                </div>
+
+                <!-- Daily Goal Input -->
+                <div class="control-group">
+                    <label for="goalInput">What Is Your Main Goal For Today?</label>
+                    <input type="text" id="goalInput" placeholder="Enter your main goal...">
+                    <button id="saveGoal" class="primary-button">Save Goal</button>
+                </div>
+
+                <!-- Activity Reminders -->
+                <div class="control-group">
+                    <h3>Activity Reminders</h3>
+                    <div class="reminder-settings">
+                        <label>
+                            <input type="checkbox" id="stretchReminder" checked>
+                            Stretch breaks
+                        </label>
+                        <label>
+                            <input type="checkbox" id="waterReminder" checked>
+                            Water breaks
+                        </label>
+                        <label>
+                            <input type="checkbox" id="positionReminder" checked>
+                            Posture check
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Daily Challenge -->
+                <div class="widget challenge-widget">
+                    <h3>Daily Challenge</h3>
+                    <p id="dailyChallenge">Complete 10 minutes of mindful breathing</p>
+                    <button id="newChallenge" class="secondary-button">Get New Challenge</button>
+                </div>
+            </section>
+
+            <!-- Usage Insights -->
+            <section class="insights-panel">
+                <h2>Your Insights</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="material-icons">timer</span>
+                        <h4>Focus Time</h4>
+                        <p>2h 30m today</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons">task_alt</span>
+                        <h4>Challenges Completed</h4>
+                        <p>3 today</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons">auto_awesome</span>
+                        <h4>Quotes Interacted</h4>
+                        <p>12 today</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <button id="resetDefaults" class="secondary-button">Reset to Defaults</button>
+            <button id="saveChanges" class="primary-button">Save Changes</button>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

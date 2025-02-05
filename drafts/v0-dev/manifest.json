@@ -14,12 +14,12 @@
     },
     "action": {
       "default_popup": "popup.html",
-      "default_icon": "main-branch/ui/icons/logo-removedbg-preview.png"
+      "default_icon": "logo-removedbg-preview.png"
     },
     "icons": {
-      "16": "main-branch/ui/icons/logo-removedbg-preview.png",
-      "48": "main-branch/ui/icons/logo-removedbg-preview.png",
-      "128": "main-branch/ui/icons/logo-removedbg-preview.png"
+      "16": "logo-removedbg-preview.png",
+      "48": "logo-removedbg-preview.png",
+      "128": "logo-removedbg-preview.png"
     },
     "host_permissions": ["http://*/*", "https://*/*"]
   }

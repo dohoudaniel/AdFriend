@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdFriend</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="material-icons">psychology</span>
+                <h1>AdFriend</h1>
+            </div>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="material-icons">dark_mode</span>
+                </button>
+                <button class="settings-btn" aria-label="Settings">
+                    <span class="material-icons">settings</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Daily Goal Section -->
+            <section class="daily-goal-section">
+                <h2>Today's Goal</h2>
+                <div class="input-wrapper">
+                    <input type="text" id="dailyGoal" placeholder="What's your main goal for today?">
+                    <button class="save-goal">
+                        <span class="material-icons">check</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quote Widget -->
+            <section class="widget quote-widget">
+                <h3>Daily Inspiration</h3>
+                <p id="quote">"The only way to do great work is to love what you do."</p>
+                <button class="refresh-quote">
+                    <span class="material-icons">refresh</span>
+                </button>
+            </section>
+
+            <!-- Pomodoro Timer -->
+            <section class="widget pomodoro-widget">
+                <h3>Pomodoro Timer</h3>
+                <div class="timer-display">25:00</div>
+                <div class="timer-controls">
+                    <button class="timer-btn start">
+                        <span class="material-icons">play_arrow</span>
+                    </button>
+                    <button class="timer-btn pause">
+                        <span class="material-icons">pause</span>
+                    </button>
+                    <button class="timer-btn reset">
+                        <span class="material-icons">restart_alt</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Daily Challenge -->
+            <section class="widget challenge-widget">
+                <h3>Daily Challenge</h3>
+                <p class="challenge-text">Take a 5-minute break and do some quick stretches!</p>
+                <button class="complete-challenge">
+                    <span class="material-icons">task_alt</span>
+                    Complete
+                </button>
+            </section>
+
+            <!-- Usage Insights -->
+            <section class="widget insights-widget">
+                <h3>Today's Insights</h3>
+                <div class="insights-grid">
+                    <div class="insight-item">
+                        <span class="material-icons">timer</span>
+                        <p>Focus Time</p>
+                        <h4>2h 30m</h4>
+                    </div>
+                    <div class="insight-item">
+                        <span class="material-icons">psychology</span>
+                        <p>Challenges</p>
+                        <h4>3/5</h4>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <button class="primary-btn">Save Changes</button>
+            <button class="secondary-btn">Reset</button>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

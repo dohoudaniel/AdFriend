@@ -1,0 +1,249 @@
+:root {
+    /* Light Theme Colors */
+    --primary-light: #6366f1;
+    --bg-light: #ffffff;
+    --text-light: #1f2937;
+    --surface-light: #f3f4f6;
+    --border-light: #e5e7eb;
+
+    /* Dark Theme Colors */
+    --primary-dark: #818cf8;
+    --bg-dark: #1f2937;
+    --text-dark: #f9fafb;
+    --surface-dark: #374151;
+    --border-dark: #4b5563;
+
+    /* Common Variables */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+    width: 400px;
+    min-height: 600px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Theme Styles */
+body.light-theme {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+body.dark-theme {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: var(--spacing-sm);
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.header-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Button Styles */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    transition: all 0.2s;
+}
+
+.light-theme button {
+    color: var(--text-light);
+}
+
+.dark-theme button {
+    color: var(--text-dark);
+}
+
+button:hover {
+    background-color: var(--surface-light);
+}
+
+.dark-theme button:hover {
+    background-color: var(--surface-dark);
+}
+
+/* Widget Styles */
+.widget {
+    background-color: var(--surface-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.dark-theme .widget {
+    background-color: var(--surface-dark);
+}
+
+.widget h3 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Daily Goal Section */
+.daily-goal-section {
+    margin-bottom: var(--spacing-md);
+}
+
+.input-wrapper {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: all 0.2s;
+}
+
+.dark-theme input[type="text"] {
+    background-color: var(--bg-dark);
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+/* Quote Widget */
+.quote-widget {
+    position: relative;
+}
+
+.quote-widget button {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+}
+
+/* Pomodoro Widget */
+.timer-display {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: var(--spacing-md) 0;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+/* Challenge Widget */
+.challenge-widget .complete-challenge {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--primary-light);
+    color: white;
+    border-radius: var(--radius-md);
+}
+
+.dark-theme .challenge-widget .complete-challenge {
+    background-color: var(--primary-dark);
+}
+
+/* Insights Widget */
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.insight-item {
+    text-align: center;
+    padding: var(--spacing-sm);
+    background-color: var(--bg-light);
+    border-radius: var(--radius-md);
+}
+
+.dark-theme .insight-item {
+    background-color: var(--bg-dark);
+}
+
+.insight-item .material-icons {
+    font-size: 2rem;
+    color: var(--primary-light);
+}
+
+.dark-theme .insight-item .material-icons {
+    color: var(--primary-dark);
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+}
+
+.primary-btn {
+    background-color: var(--primary-light);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.dark-theme .primary-btn {
+    background-color: var(--primary-dark);
+}
+
+.secondary-btn {
+    border: 1px solid var(--border-light);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.dark-theme .secondary-btn {
+    border-color: var(--border-dark);
+}

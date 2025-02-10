@@ -3,7 +3,14 @@
     "name": "Adfriend",
     "version": "0.5",
     "description": "Adfriend is designed to replace a chrome ads on the browser with some positive and helpful content",
-    "permissions": ["activeTab", "scripting"],
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "webNavigation",
+        "webRequest",
+        "webRequestBlocking",
+        "storage"
+    ],
     "background": {
         "service_worker": "scripts/background_process.js"
     },

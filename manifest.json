@@ -1,27 +1,23 @@
 {
     "manifest_version": 3,
-    "name": "Adfriend",
-    "version": "0.5",
-    "description": "Adfriend is designed to replace a chrome ads on the browser with some positive and helpful content",
-    "permissions": [
-        "activeTab",
-        "scripting",
-        "webNavigation",
-        "webRequest",
-        "webRequestBlocking",
-        "storage"
+    "name": "AdFriend - Ad Counter",
+    "version": "1.0",
+    "description": "Counts the number of ads on a webpage",
+    "permissions": ["storage"],
+    "host_permissions": ["<all_urls>"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
     ],
-    "background": {
-        "service_worker": "scripts/background_process.js"
-    },
-    "icons": {
-        "16": "ui/icons/logo.png",
-        "48": "ui/icons/logo.png",
-        "128": "ui/icons/logo.png"
-    },
     "action": {
-        "default_popup": "ui/ui_interface.html",
-        "default_icon": "ui/icons/logo.png"
-    },
-    "host_permissions": ["http://*/*", "https://*/*"]
-}
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon-16.png",
+        "48": "icons/icon-48.png",
+        "128": "icons/icon-128.png"
+      }
+    }
+  }
+  

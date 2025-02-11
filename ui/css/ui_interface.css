@@ -22,3 +22,14 @@ body {
     border-radius: 5px;
     font-size: 1.2em;
 }
+
+.adContent {
+    font-family: Arial, sans-serif;
+    transition: all 1.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.adContent:hover{
+    transform: scale (2.02);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

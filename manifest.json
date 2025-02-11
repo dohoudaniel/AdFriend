@@ -8,7 +8,8 @@
         "scripting",
         "webNavigation",
         "webRequest",
-        "webRequestBlocking",
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback",
         "storage"
     ],
     "background": {
@@ -23,5 +24,12 @@
         "default_popup": "ui/ui_interface.html",
         "default_icon": "ui/icons/logo.png"
     },
-    "host_permissions": ["http://*/*", "https://*/*"]
+    "host_permissions": ["<all_urls>"],
+    "declarative_net_request": {
+        "rule_resources": [{
+            "id": "ruleset_1",
+            "enabled": true,
+            "path": "rules.json"
+        }]
+    }
 }

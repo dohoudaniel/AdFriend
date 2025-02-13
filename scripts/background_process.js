@@ -22,3 +22,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension installed successfully!");
 });
+
+//
+//
+//

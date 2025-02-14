@@ -1,6 +1,6 @@
 // Function to inject custom styles
 function injectStyles() {
-    const style = document.createElement('style');
+    var style = document.createElement('style');
     style.textContent = `
         .adContent {
             background: #f5f5f5;
@@ -20,7 +20,7 @@ function injectStyles() {
 
 // Function to get random content
 function getCustomContent() {
-    const content = [
+    var content = [
         {
             type: "quote",
             content: '"The best way to predict the future is to create it." - Peter Drucker'
@@ -41,7 +41,7 @@ function getCustomContent() {
 // Main function to replace ads
 function replaceAds() {
     // Common ad selectors - expanded list
-    const adSelectors = [
+    var adSelectors = [
         'div[class*="ad-"]',
         'div[id*="ad-"]',
         'div[class*="ads"]',
@@ -60,42 +60,48 @@ function replaceAds() {
     ];
 
     // Try to find ad elements
-    adSelectors.forEach(function(selector) {
+    for (var i = 0; i < adSelectors.length; i++) {
         try {
-            const adElements = document.querySelectorAll(selector);
+            var selector = adSelectors[i];
+            var adElements = document.querySelectorAll(selector);
 
-            adElements.forEach(function(adElement) {
+            for (var j = 0; j < adElements.length; j++) {
+                var adElement = adElements[j];
+
                 // Only replace if element exists and is visible
-                if (adElement && adElement.offsetParent !== null) {
+                var rect = adElement.getBoundingClientRect();
+                if (adElement && rect.width > 0 && rect.height > 0) {
                     // Get original dimensions
-                    const width = adElement.offsetWidth || 300;
-                    const height = adElement.offsetHeight || 250;
+                    var width = rect.width || 300;
+                    var height = rect.height || 250;
 
                     // Create replacement content
-                    const replacementDiv = document.createElement('div');
-                    const customContent = getCustomContent();
+                    var replacementDiv = document.createElement('div');
+                    var customContent = getCustomContent();
 
                     replacementDiv.className = 'adContent';
                     replacementDiv.style.width = width + 'px';
                     replacementDiv.style.height = height + 'px';
-                    replacementDiv.innerHTML = `
-                        <h3 style="margin:0 0 10px 0; color:#333;">${customContent.type.toUpperCase()}</h3>
-                        <p style="margin:0; color:#666;">${customContent.content}</p>
-                    `;
+                    replacementDiv.innerHTML = 
+                        '<h3 style="margin:0 0 10px 0; color:#333;">' + customContent.type.toUpperCase() + '</h3>' +
+                        '<p style="margin:0; color:#666;">' + customContent.content + '</p>';
+
                     // Replace the ad
-                    adElement.parentNode.replaceChild(replacementDiv, adElement);
-                    console.log('Replaced ad element:', selector);
+                    if (adElement.parentNode) {
+                        adElement.parentNode.replaceChild(replacementDiv, adElement);
+                        console.log('Replaced ad element:', selector);
+                    }
                 }
-            });
+            }
         } catch (error) {
             console.error('Error replacing ad for selector:', selector, error);
         }
-    });
+    }
 }
 
 // Initialize observer with debounce
-let debounceTimeout;
-const observer = new MutationObserver(function() {
+var debounceTimeout;
+var observer = new MutationObserver(function() {
     clearTimeout(debounceTimeout);
     debounceTimeout = setTimeout(replaceAds, 500);
 });
@@ -109,9 +115,7 @@ function initialize() {
     // Start observing
     observer.observe(document.body, {
         childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['class', 'id']
+        subtree: true
     });
 }
 

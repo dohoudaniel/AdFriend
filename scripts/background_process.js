@@ -25,13 +25,11 @@ function getCustomContent() {
             type: "quote",
             content: '"The best way to predict the future is to create it." - Peter Drucker'
         },
-        {
-            type: "tip",
-            content: "Take a 5-minute break to stretch and stay healthy!"
+        { type: "tip",
+          content: "Take a 5-minute break to stretch and stay healthy!"
         },
-        {
-            type: "fact",
-            content: "Did you know? Dolphins use whistles to identify each other!"
+        { type: "fact",
+          content: "Did you know? Dolphins use whistles to identify each other!"
         }
     ];
 
@@ -40,61 +38,47 @@ function getCustomContent() {
 
 // Main function to replace ads
 function replaceAds() {
-    // Common ad selectors - expanded list
     var adSelectors = [
-        'div[class*="ad-"]',
-        'div[id*="ad-"]',
-        'div[class*="ads"]',
-        'div[id*="ads"]',
-        'div[class*="advertisement"]',
-        'div[id*="advertisement"]',
-        'div[class*="ad"]',
-        'div[id*="ad"]',
-        'ins.adsbygoogle',
-        'div[data-ad]',
-        'div[aria-label*="advertisement"]',
-        '.ad-container',
-        '#ad-container',
-        '[class*="sponsored"]',
-        '[id*="sponsored"]'
+        'div[class*="ad-"]', 'div[id*="ad-"]', 'div[class*="ads"]', 'div[id*="ads"]',
+        'div[class*="advertisement"]', 'div[id*="advertisement"]', 'div[class*="ad"]',
+        'div[id*="ad"]', 'ins.adsbygoogle', 'div[data-ad]', 'div[aria-label*="advertisement"]',
+        '.ad-container', '#ad-container', '[class*="sponsored"]', '[id*="sponsored"]'
     ];
 
-    // Try to find ad elements
-    for (var i = 0; i < adSelectors.length; i++) {
+    adSelectors.forEach(function(selector) {
         try {
-            var selector = adSelectors[i];
             var adElements = document.querySelectorAll(selector);
-
-            for (var j = 0; j < adElements.length; j++) {
-                var adElement = adElements[j];
-
-                // Only replace if element exists and is visible
-                var rect = adElement.getBoundingClientRect();
-                if (adElement && rect.width > 0 && rect.height > 0) {
-                    // Get original dimensions
-                    var width = rect.width || 300;
-                    var height = rect.height || 250;
-
-                    // Create replacement content
+            adElements.forEach(function(adElement) {
+                if (adElement && adElement.offsetParent !== null) {
+                    var width = adElement.offsetWidth || 300;
+                    var height = adElement.offsetHeight || 250;
                     var replacementDiv = document.createElement('div');
                     var customContent = getCustomContent();
-
                     replacementDiv.className = 'adContent';
                     replacementDiv.style.width = width + 'px';
                     replacementDiv.style.height = height + 'px';
-                    replacementDiv.innerHTML = 
-                        '<h3 style="margin:0 0 10px 0; color:#333;">' + customContent.type.toUpperCase() + '</h3>' +
-                        '<p style="margin:0; color:#666;">' + customContent.content + '</p>';
-
-                    // Replace the ad
-                    if (adElement.parentNode) {
-                        adElement.parentNode.replaceChild(replacementDiv, adElement);
-                        console.log('Replaced ad element:', selector);
-                    }
+                    replacementDiv.innerHTML = '<h3 style="margin:0 0 10px 0; color:#333;">' + customContent.type.toUpperCase() + '</h3>' +
+                                              '<p style="margin:0; color:#666;">' + customContent.content + '</p>';
+                    adElement.parentNode.replaceChild(replacementDiv, adElement);
+                    console.log('Replaced ad element:', selector);
                 }
-            }
+            });
         } catch (error) {
             console.error('Error replacing ad for selector:', selector, error);
+        }
+    });
+
+    // Handle iframe-based ads
+    var iframes = document.getElementsByTagName("iframe");
+    for (var i = 0; i < iframes.length; i++) {
+        try {
+            var iframeDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
+            var iframeAds = iframeDoc.querySelectorAll(adSelectors.join(','));
+            for (var j = 0; j < iframeAds.length; j++) {
+                iframeAds[j].style.display = "none";
+            }
+        } catch (e) {
+            console.warn("Blocked iframe: ", e);
         }
     }
 }
@@ -111,12 +95,7 @@ function initialize() {
     console.log('Initializing ad replacement...');
     injectStyles();
     replaceAds();
-
-    // Start observing
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
+    observer.observe(document.body,{ childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'id'] });
 }
 
 // Run when DOM is ready

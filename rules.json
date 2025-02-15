@@ -8,7 +8,6 @@
             "resourceTypes": ["script", "image", "xmlhttprequest"]
         }
     },
-
     {
         "id": 2,
         "priority": 1,
@@ -17,6 +16,5 @@
             "urlFilter": "*://*.googlesyndication.com/*",
             "resourceTypes": ["script", "image", "xmlhttprequest"]
         }
-
     }
 ]

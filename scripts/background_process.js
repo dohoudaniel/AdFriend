@@ -21,34 +21,27 @@ function injectStyles() {
 // Function to get random content
 function getCustomContent() {
     var content = [
-        {
-            type: "quote",
-            content: '"The best way to predict the future is to create it." - Peter Drucker'
-        },
-        { type: "tip",
-          content: "Take a 5-minute break to stretch and stay healthy!"
-        },
-        { type: "fact",
-          content: "Did you know? Dolphins use whistles to identify each other!"
-        }
+        { type: "quote", content: '"The best way to predict the future is to create it." - Peter Drucker' },
+        { type: "tip", content: "Take a 5-minute break to stretch and stay healthy!" },
+        { type: "fact", content: "Did you know? Dolphins use whistles to identify each other!" }
     ];
 
     return content[Math.floor(Math.random() * content.length)];
 }
 
-// Main function to replace ads
+// Function to replace ads and track count
 function replaceAds() {
-    var adSelectors = [ /*
-        'div[class*="ad-"]', 'div[id*="ad-"]', 'div[class*="ads"]', 'div[id*="ads"]',
-        'div[class*="advertisement"]', 'div[id*="advertisement"]', 'div[class*="ad"]',
-        */'div[id*="content"]','div[class*="content"]', 'ins.adsbygoogle', 'div[data-ad]', 'div[aria-label*="advertisement"]',
-        '.ad-container', '#ad-container', '[class*="sponsored"]', '[id*="sponsored"]'
+    var adSelectors = [
+        'div[id*="content"]', 'div[class*="content"]', 'ins.adsbygoogle', 'div[data-ad]',
+        'div[aria-label*="advertisement"]', '.ad-container', '#ad-container',
+        '[class*="sponsored"]', '[id*="sponsored"]'
     ];
+
+    let adsReplaced = 0;
 
     adSelectors.forEach(function(selector) {
         try {
             var adElements = document.querySelectorAll(selector);
-            //console.log("checking selectors" + selector + "found" adElement.length);
             adElements.forEach(function(adElement) {
                 if (adElement && adElement.tagName !== 'BODY' && adElement.tagName !== 'HTML') {
                     var width = adElement.offsetWidth || 300;
@@ -60,7 +53,7 @@ function replaceAds() {
                     replacementDiv.style.height = height + 'px';
                     replacementDiv.innerHTML = '<h3 style="margin:0 0 10px 0; color:#333;">' + customContent.type.toUpperCase() + '</h3>' + '<p style="margin:0; color:#666;">' + customContent.content + '</p>';
                     adElement.parentNode.replaceChild(replacementDiv, adElement);
-                    console.log('Replaced ad element:', selector);
+                    adsReplaced++;
                 }
             });
         } catch (error) {
@@ -68,34 +61,28 @@ function replaceAds() {
         }
     });
 
-    // Handle iframe-based ads
-    var iframes = document.getElementsByTagName("iframe");
-    for (var i = 0; i < iframes.length; i++) {
-        try {
-            var iframeDoc = iframes[i].contentDocument || iframes[i].contentWindow.document;
-            var iframeAds = iframeDoc.querySelectorAll(adSelectors.join(','));
-            for (var j = 0; j < iframeAds.length; j++) {
-                iframeAds[j].style.display = "none";
-            }
-        } catch (e) {
-            console.warn("Blocked iframe: ", e);
-        }
+    // Update the storage with the number of ads replaced
+    if (adsReplaced > 0) {
+        chrome.storage.local.get(["adsReplaced"], function (data) {
+            let totalAds = (data.adsReplaced || 0) + adsReplaced;
+            chrome.storage.local.set({ adsReplaced: totalAds });
+        });
     }
 }
 
-// Initialize observer with debounce
+// Initialize observer for dynamically loaded ads
 var debounceTimeout;
 var observer = new MutationObserver(function() {
     clearTimeout(debounceTimeout);
     debounceTimeout = setTimeout(replaceAds, 1000);
 });
 
-// Main initialization of of all my custom function so far 
+// Main initialization function
 function initialize() {
     console.log('Initializing ad replacement');
     injectStyles();
     replaceAds();
-    observer.observe(document.body,{ childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'id'] });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'id'] });
 }
 
 // Run when DOM is ready

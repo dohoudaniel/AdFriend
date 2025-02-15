@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Adfriend",
+    "version": "0.5",
+    "description": "Replaces Chrome ADs on a web page with positive content",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "webNavigation",
+        "webRequest",
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "scripts/background_process.js"
+    },
+    "icons": {
+        "16": "ui/icons/logo.png",
+        "48": "ui/icons/logo.png",
+        "128": "ui/icons/logo.png"
+    },
+    "action": {
+        "default_popup": "ui/ui_interface.html",
+        "default_icon": "ui/icons/logo.png"
+    },
+    "host_permissions": ["<all_urls>"],
+    "declarative_net_request": {
+        "rule_resources": [{
+            "id": "ruleset_1",
+            "enabled": true,
+            "path": "rules.json"
+        }]
+    }
+}

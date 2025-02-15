@@ -41,7 +41,7 @@ function replaceAds() {
     var adSelectors = [ /*
         'div[class*="ad-"]', 'div[id*="ad-"]', 'div[class*="ads"]', 'div[id*="ads"]',
         'div[class*="advertisement"]', 'div[id*="advertisement"]', 'div[class*="ad"]',
-        */'div[id*="content"]','div[class*="content"]', 'ins.adsbygoogle', 'div[data-ad]', 'div[aria-label*="advertisement"]',
+        */ 'ins.adsbygoogle', 'div[data-ad]', 'div[aria-label*="advertisement"]',
         '.ad-container', '#ad-container', '[class*="sponsored"]', '[id*="sponsored"]'
     ];
 

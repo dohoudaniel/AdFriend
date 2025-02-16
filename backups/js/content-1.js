@@ -3,55 +3,34 @@ function injectStyles() {
     var style = document.createElement('style');
     style.textContent = `
     /*
-      Enhanced "Glossy Bubble" style reminiscent of your AdFriend logo.
-      This overrides any inline styling on the replaced elements.
+      "Glossy" style reminiscent of a bubble or sphere,
+      similar to your uploaded AdFriend logo.
     */
     .adContent {
-      position: relative;
-      overflow: hidden;
-      /* Bubble-like radial gradient background */
+      /* A radial gradient for a soft, spherical feel */
       background: radial-gradient(
         circle at 30% 20%,
-        #49c5f0 0%,   /* Light, bright blue highlight */
-        #2178b8 40%,  /* Mid-tone */
-        #1a5e8f 100%  /* Deeper blue at the edges */
+        #49c5f0 0%,    /* Light, bright blue highlight */
+        #2178b8 40%,   /* Mid-tone */
+        #1a5e8f 100%   /* Deeper blue at the edges */
       );
 
-      /* Rounded corners for a bubble effect */
-      border-radius: 16px;
-      margin: 6px;
+      /* Slight border & radius to enhance the bubble effect */
+      border-radius: 12px;
       padding: 12px;
+      margin: 6px;
 
-      /* Subtle outer and inner shadows for dimension */
+      /* Subtle "outer" and "inner" shadows for dimension */
       box-shadow:
-        0 3px 8px rgba(0, 0, 0, 0.2),           /* Outer shadow */
-        inset 0 0 15px rgba(255, 255, 255, 0.15); /* Inner glow */
+        0 2px 4px rgba(0, 0, 0, 0.2),          /* Outer shadow */
+        inset 0 0 10px rgba(255, 255, 255, 0.15); /* Inner glow */
 
       /* Smooth transitions on hover effects */
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
 
       /* Light text for contrast against the darker blues */
       color: #f0faff;
       font-family: Arial, sans-serif;
-    }
-
-    /* Add a soft highlight reflection using a pseudo-element */
-    .adContent::before {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: inherit;
-
-      /* A second radial gradient for the "reflection" highlight */
-      background: radial-gradient(
-        circle at 25% 20%,
-        rgba(255,255,255,0.3) 0%,
-        rgba(255,255,255,0) 60%
-      );
     }
 
     /* Slight hover scaling and intensification of the glow */
@@ -59,19 +38,18 @@ function injectStyles() {
       transform: scale(1.05);
       box-shadow:
         0 6px 12px rgba(0, 0, 0, 0.25),
-        inset 0 0 18px rgba(255, 255, 255, 0.25);
+        inset 0 0 12px rgba(255, 255, 255, 0.25);
     }
 
-    /* Override any inline color on headings */
+    /* Headings can be slightly brighter */
     .adContent h3 {
-      margin: 0 0 10px 0 !important;
-      color: #ffffff !important;
+      color: #ffffff;
+      margin-bottom: 8px;
     }
 
-    /* Override any inline color on paragraphs */
+    /* Paragraph text remains a lighter shade */
     .adContent p {
-      margin: 0 !important;
-      color: #eef8ff !important;
+      color: #eef8ff;
     }
   `;
     document.head.appendChild(style);
@@ -167,10 +145,9 @@ function replaceAds() {
                     replacementDiv.className = 'adContent';
                     replacementDiv.style.width = width + 'px';
                     replacementDiv.style.height = height + 'px';
-                    // We won't rely on inline color styles, since we override them in injectStyles()
-                    replacementDiv.innerHTML = '<h3>' +
+                    replacementDiv.innerHTML = '<h3 style="margin:0 0 10px 0; color:#333;">' +
                         customContent.type.toUpperCase() + '</h3>' +
-                        '<p>' + customContent.content + '</p>';
+                        '<p style="margin:0; color:#666;">' + customContent.content + '</p>';
                     adElement.parentNode.replaceChild(replacementDiv, adElement);
                     console.log('Replaced ad element:', selector);
                 }

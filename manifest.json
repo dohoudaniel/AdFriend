@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "AdFriend",
+    "name": "Adfriend",
     "version": "0.5",
-    "description": "Intercepts and replaces ad elements on web pages with customizable, positive content widgets.",
+    "description": "Adfriend is designed to replace a chrome ads on the browser with some positive and helpful content",
     "permissions": [
         "activeTab",
         "scripting",

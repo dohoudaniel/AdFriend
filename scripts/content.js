@@ -83,55 +83,291 @@ function getCustomContent() {
         {
             type: "Quote",
             content: '"The best way to predict the future is to create it." - Peter Drucker'
-        },
-        {
+          },
+          {
             type: "Tips",
             content: "Take a 5-minute break to stretch and stay healthy!"
-        },
-        {
+          },
+          {
             type: "Facts",
             content: "Did you know? Dolphins use whistles to identify each other!"
-        },
-        {
+          },
+          {
             type: "Tips",
             content: "Stay Hydrated: Drink plenty of water throughout the day. It helps with energy, focus, and overall health."
-        },
-        {
+          },
+          {
             type: "Tips",
             content: "Time Management: Break tasks into smaller, manageable chunks. Use techniques like Pomodoro (25-minute work sprints followed by a 5-minute break) for better focus."
-        },
-        {
+          },
+          {
             type: "Tips",
             content: "Exercise Regularly: Regular physical activity can boost your mood, improve focus, and help you stay healthy. Even a short walk can make a difference."
-        },
-        {
+          },
+          {
             type: "Tips",
-            content: "Take Breaks: Step away from work every hour to refresh your mind and prevent burnout"
-        },
-        {
+            content: "Take Breaks: Step away from work every hour to refresh your mind and prevent burnout."
+          },
+          {
             type: "Hints",
             content: "Use Keyboard Shortcuts: Save time by learning keyboard shortcuts for the apps and programs you use the most. For example, Ctrl + C for copy, Ctrl + V for paste."
-        },
-        {
+          },
+          {
             type: "Hints",
             content: "Always Backup Your Work: Use cloud storage or external drives to keep backups of important documents, photos, and projects."
-        },
-        {
+          },
+          {
             type: "Hints",
             content: "Use Task Lists: Writing down tasks and prioritizing them can help you stay focused and organized throughout the day."
-        },
-        {
+          },
+          {
             type: "Hints",
             content: "Honey Never Spoils: Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible."
-        },
-        {
+          },
+          {
             type: "Facts",
             content: "Octopuses Have Three Hearts: Two pump blood to the gills, while one pumps it to the rest of the body. When they swim, the heart that delivers blood to the body stops beating!"
-        },
-        {
+          },
+          {
             type: "Facts",
-            content: "The Eiffel Tower Can Grow Taller in Summer: Due to the expansion of iron in the heat, the Eiffel Tower can grow up to 6 inches (15 cm) taller during hot weather"
-        }
+            content: "The Eiffel Tower Can Grow Taller in Summer: Due to the expansion of iron in the heat, the Eiffel Tower can grow up to 6 inches (15 cm) taller during hot weather."
+          },
+          {
+            type: "Quote",
+            content: '"Believe you can and you\'re halfway there." - Theodore Roosevelt'
+          },
+          {
+            type: "Quote",
+            content: '"Your limitation—it\'s only your imagination."'
+          },
+          {
+            type: "Quote",
+            content: '"Push yourself, because no one else is going to do it for you."'
+          },
+          {
+            type: "Quote",
+            content: '"Great things never come from comfort zones."'
+          },
+          {
+            type: "Quote",
+            content: '"Dream it. Wish it. Do it."'
+          },
+          {
+            type: "Quote",
+            content: '"Success doesn’t just find you. You have to go out and get it."'
+          },
+          {
+            type: "Quote",
+            content: '"The harder you work for something, the greater you\'ll feel when you achieve it."'
+          },
+          {
+            type: "Quote",
+            content: '"Don\'t stop when you\'re tired. Stop when you\'re done."'
+          },
+          {
+            type: "Quote",
+            content: '"Do something today that your future self will thank you for."'
+          },
+          {
+            type: "Quote",
+            content: '"Little things make big days."'
+          },
+          {
+            type: "Quote",
+            content: '"It\'s going to be hard, but hard does not mean impossible."'
+          },
+          {
+            type: "Quote",
+            content: '"Don\'t wait for opportunity. Create it."'
+          },
+          {
+            type: "Tips",
+            content: "Organize your workspace to boost productivity."
+          },
+          {
+            type: "Tips",
+            content: "Plan your day the night before for a head start."
+          },
+          {
+            type: "Tips",
+            content: "Set clear goals for each day to stay on track."
+          },
+          {
+            type: "Tips",
+            content: "Break your work into small, manageable tasks."
+          },
+          {
+            type: "Tips",
+            content: "Use a timer to focus on tasks for 25-minute intervals."
+          },
+          {
+            type: "Tips",
+            content: "Take a quick walk to recharge your energy."
+          },
+          {
+            type: "Tips",
+            content: "Practice deep breathing for a few minutes to reduce stress."
+          },
+          {
+            type: "Tips",
+            content: "Keep a water bottle at your desk and sip regularly."
+          },
+          {
+            type: "Tips",
+            content: "Stand up and stretch every 30 minutes."
+          },
+          {
+            type: "Tips",
+            content: "Switch tasks periodically to keep your mind fresh."
+          },
+          {
+            type: "Hints",
+            content: "Try the Pomodoro technique: 25 minutes of work followed by a 5-minute break."
+          },
+          {
+            type: "Hints",
+            content: "Reward yourself after completing challenging tasks."
+          },
+          {
+            type: "Hints",
+            content: "Maintain a prioritized to-do list to organize your day."
+          },
+          {
+            type: "Hints",
+            content: "Declutter your digital workspace to minimize distractions."
+          },
+          {
+            type: "Hints",
+            content: "Limit your social media breaks to improve focus."
+          },
+          {
+            type: "Hints",
+            content: "Practice mindfulness exercises to enhance concentration."
+          },
+          {
+            type: "Activity",
+            content: "Do 10 push-ups to energize your body."
+          },
+          {
+            type: "Activity",
+            content: "Take a brisk 5-minute walk outside."
+          },
+          {
+            type: "Activity",
+            content: "Perform a quick 3-minute stretching routine."
+          },
+          {
+            type: "Activity",
+            content: "Meditate for 5 minutes to clear your mind."
+          },
+          {
+            type: "Activity",
+            content: "Dance to your favorite upbeat song for a mood boost."
+          },
+          {
+            type: "Activity",
+            content: "Do light yoga stretches for 5 minutes."
+          },
+          {
+            type: "Activity",
+            content: "Step outside and get some fresh air for 5 minutes."
+          },
+          {
+            type: "Activity",
+            content: "Perform 15 squats to get your blood flowing."
+          },
+          {
+            type: "Activity",
+            content: "Take a power nap for 10 minutes if you're feeling drained."
+          },
+          {
+            type: "Activity",
+            content: "Stand up and do some leg stretches for 3 minutes."
+          },
+          {
+            type: "Activity",
+            content: "Drink a glass of water and practice deep breathing for 2 minutes."
+          },
+          {
+            type: "Quote",
+            content: '"Don\'t count the days, make the days count." - Muhammad Ali'
+          },
+          {
+            type: "Quote",
+            content: '"Every moment is a fresh beginning." - T.S. Eliot'
+          },
+          {
+            type: "Quote",
+            content: '"The future depends on what you do today." - Mahatma Gandhi'
+          },
+          {
+            type: "Facts",
+            content: "A single tree can absorb as much carbon in a year as a car produces while driving 26,000 miles."
+          },
+          {
+            type: "Facts",
+            content: "The average person walks the equivalent of three times around the world in a lifetime."
+          },
+          {
+            type: "Facts",
+            content: "Smiling can boost your immune system and reduce stress."
+          },
+          {
+            type: "Facts",
+            content: "Listening to music can enhance your performance on cognitive tasks."
+          }
+        // {
+        //     type: "Quote",
+        //     content: '"The best way to predict the future is to create it." - Peter Drucker'
+        // },
+        // {
+        //     type: "Tips",
+        //     content: "Take a 5-minute break to stretch and stay healthy!"
+        // },
+        // {
+        //     type: "Facts",
+        //     content: "Did you know? Dolphins use whistles to identify each other!"
+        // },
+        // {
+        //     type: "Tips",
+        //     content: "Stay Hydrated: Drink plenty of water throughout the day. It helps with energy, focus, and overall health."
+        // },
+        // {
+        //     type: "Tips",
+        //     content: "Time Management: Break tasks into smaller, manageable chunks. Use techniques like Pomodoro (25-minute work sprints followed by a 5-minute break) for better focus."
+        // },
+        // {
+        //     type: "Tips",
+        //     content: "Exercise Regularly: Regular physical activity can boost your mood, improve focus, and help you stay healthy. Even a short walk can make a difference."
+        // },
+        // {
+        //     type: "Tips",
+        //     content: "Take Breaks: Step away from work every hour to refresh your mind and prevent burnout"
+        // },
+        // {
+        //     type: "Hints",
+        //     content: "Use Keyboard Shortcuts: Save time by learning keyboard shortcuts for the apps and programs you use the most. For example, Ctrl + C for copy, Ctrl + V for paste."
+        // },
+        // {
+        //     type: "Hints",
+        //     content: "Always Backup Your Work: Use cloud storage or external drives to keep backups of important documents, photos, and projects."
+        // },
+        // {
+        //     type: "Hints",
+        //     content: "Use Task Lists: Writing down tasks and prioritizing them can help you stay focused and organized throughout the day."
+        // },
+        // {
+        //     type: "Hints",
+        //     content: "Honey Never Spoils: Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible."
+        // },
+        // {
+        //     type: "Facts",
+        //     content: "Octopuses Have Three Hearts: Two pump blood to the gills, while one pumps it to the rest of the body. When they swim, the heart that delivers blood to the body stops beating!"
+        // },
+        // {
+        //     type: "Facts",
+        //     content: "The Eiffel Tower Can Grow Taller in Summer: Due to the expansion of iron in the heat, the Eiffel Tower can grow up to 6 inches (15 cm) taller during hot weather"
+        // }
     ];
     return content[Math.floor(Math.random() * content.length)];
 }

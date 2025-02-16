@@ -1,37 +1,36 @@
 {
-    "manifest_version": 3,
-    "name": "Adfriend",
-    "version": "0.5",
-    "description": "Replaces Chrome ads on a web page with positive content",
-    "permissions": [
-      "activeTab",
-      "scripting",
-      "webNavigation",
-      "webRequest",
-      "declarativeNetRequest",
-      "declarativeNetRequestFeedback",
-      "storage"
-    ],
-    "host_permissions": ["<all_urls>"],
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["scripts/content.js"],
-        "run_at": "document_end"
-      }
-    ],
-    "action": {
-      "default_popup": "ui/ui_interface.html",
-      "default_icon": "ui/icons/logo.png"
-    },
-    "declarative_net_request": {
-      "rule_resources": [
-        {
-          "id": "ruleset_1",
-          "enabled": true,
-          "path": "rules.json"
-        }
-      ]
+  "manifest_version": 3,
+  "name": "Adfriend",
+  "version": "0.5",
+  "description": "Replaces Chrome ads on a web page with positive content.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "webNavigation",
+    "webRequest",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "storage"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_end"
     }
+  ],
+  "action": {
+    "default_popup": "ui/ui_interface.html",
+    "default_icon": "ui/icons/logo.png"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
   }
-  
+}

@@ -1,11 +1,11 @@
 // scripts/content.js
 
-// Global flag to track if ad replacement is active
+// Global flag indicating if ad replacement is active.
 let extensionActive = false;
 let observer;
 let debounceTimeout;
 
-// Listen for messages from the popup (toggle changes)
+// Listen for messages from the popup to toggle ad replacement.
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.hasOwnProperty("extensionActive")) {
     extensionActive = message.extensionActive;
@@ -17,17 +17,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-// On initial load, check the saved state
-chrome.storage.local.get(["extensionActive"], function(result) {
+// On initial load, read the saved toggle state.
+chrome.storage.local.get(["extensionActive"], (result) => {
   extensionActive = result.extensionActive || false;
   if (extensionActive) {
     startAdReplacement();
   }
 });
 
-// Inject CSS styles for replacement elements into the page
+// Inject custom CSS styles for the replacement ads.
 function injectStyles() {
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.textContent = `
     .adContent {
       background: #f5f5f5;
@@ -45,20 +45,21 @@ function injectStyles() {
   document.head.appendChild(style);
 }
 
-// Get a random positive message
+// Returns a random positive message.
 function getCustomContent() {
-  const content = [
+  const messages = [
     { type: "quote", content: '"The best way to predict the future is to create it." - Peter Drucker' },
     { type: "tip", content: "Take a 5-minute break to stretch and stay healthy!" },
     { type: "fact", content: "Did you know? Dolphins use whistles to identify each other!" }
   ];
-  return content[Math.floor(Math.random() * content.length)];
+  return messages[Math.floor(Math.random() * messages.length)];
 }
 
-// Replace detected ad elements with our custom content
+// Replaces detected ad elements with custom content.
 function replaceAds() {
-  if (!extensionActive) return; // Exit if not active
+  if (!extensionActive) return; // Only run if activated.
 
+  // CSS selectors to find ad elements.
   const adSelectors = [
     'div[id*="content"]', 'div[class*="content"]', 'ins.adsbygoogle', 'div[data-ad]',
     'div[aria-label*="advertisement"]', '.ad-container', '#ad-container',
@@ -66,51 +67,57 @@ function replaceAds() {
   ];
 
   let adsReplaced = 0;
-  adSelectors.forEach(selector => {
+  adSelectors.forEach((selector) => {
     try {
       const adElements = document.querySelectorAll(selector);
-      adElements.forEach(adElement => {
-        if (adElement && adElement.tagName !== 'BODY' && adElement.tagName !== 'HTML') {
+      adElements.forEach((adElement) => {
+        // Exclude the BODY and HTML elements.
+        if (adElement && adElement.tagName !== "BODY" && adElement.tagName !== "HTML") {
           const width = adElement.offsetWidth || 300;
           const height = adElement.offsetHeight || 250;
-          const replacementDiv = document.createElement('div');
+          const replacementDiv = document.createElement("div");
           const customContent = getCustomContent();
-          replacementDiv.className = 'adContent';
-          replacementDiv.style.width = width + 'px';
-          replacementDiv.style.height = height + 'px';
-          replacementDiv.innerHTML = `<h3 style="margin:0 0 10px 0; color:#333;">${customContent.type.toUpperCase()}</h3>
-            <p style="margin:0; color:#666;">${customContent.content}</p>`;
+          replacementDiv.className = "adContent";
+          replacementDiv.style.width = width + "px";
+          replacementDiv.style.height = height + "px";
+          replacementDiv.innerHTML = `
+            <h3 style="margin:0 0 10px 0; color:#333;">${customContent.type.toUpperCase()}</h3>
+            <p style="margin:0; color:#666;">${customContent.content}</p>
+          `;
           adElement.parentNode.replaceChild(replacementDiv, adElement);
           adsReplaced++;
         }
       });
     } catch (error) {
-      console.error('Error replacing ad for selector:', selector, error);
+      console.error("Error replacing ads for selector:", selector, error);
     }
   });
 
-  // Update the count of ads replaced in storage
+  // Update the total count of replaced ads.
   if (adsReplaced > 0) {
-    chrome.storage.local.get(["adsReplaced"], function(data) {
+    chrome.storage.local.get(["adsReplaced"], (data) => {
       const totalAds = (data.adsReplaced || 0) + adsReplaced;
       chrome.storage.local.set({ adsReplaced: totalAds });
     });
   }
 }
 
-// Start the ad replacement process
+// Start the ad replacement process.
 function startAdReplacement() {
+  // Inject styles and do an initial replacement.
   injectStyles();
   replaceAds();
+
+  // Set up a MutationObserver to catch dynamically loaded ads.
   observer = new MutationObserver(() => {
     clearTimeout(debounceTimeout);
     debounceTimeout = setTimeout(replaceAds, 1000);
   });
-  observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'id'] });
-  window.addEventListener('load', replaceAds);
+  observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class", "id"] });
+  window.addEventListener("load", replaceAds);
 }
 
-// Stop the ad replacement by disconnecting the observer
+// Stop ad replacement by disconnecting the MutationObserver.
 function stopAdReplacement() {
   if (observer) {
     observer.disconnect();

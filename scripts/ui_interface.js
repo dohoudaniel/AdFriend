@@ -1,3 +1,4 @@
+/*
 /// Handling content to replace the blocked ads
 function adElement() {
     // List of possble classname
@@ -68,7 +69,7 @@ function customCont() {
 }
 
 adElement();
-
+*/
 document.getElementById('changeColor').addEventListener('click', function() {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         chrome.scripting.executeScript({

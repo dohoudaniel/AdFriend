@@ -7,14 +7,18 @@
         "activeTab",
         "scripting",
         "webNavigation",
-        "webRequest",
-        "declarativeNetRequest",
-        "declarativeNetRequestFeedback",
         "storage"
     ],
     "background": {
         "service_worker": "scripts/background_process.js"
     },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["scripts/content.js"],
+            "run_at": "document_end"
+        }
+    ],
     "icons": {
         "16": "ui/icons/logo.png",
         "48": "ui/icons/logo.png",
@@ -24,12 +28,5 @@
         "default_popup": "ui/ui_interface.html",
         "default_icon": "ui/icons/logo.png"
     },
-    "host_permissions": ["<all_urls>"],
-    "declarative_net_request": {
-        "rule_resources": [{
-            "id": "ruleset_1",
-            "enabled": true,
-            "path": "rules.json"
-        }]
-    }
+    "host_permissions": ["<all_urls>"]
 }
